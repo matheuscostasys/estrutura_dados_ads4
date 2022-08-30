@@ -1,7 +1,8 @@
 //exercicio 01
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include <conio.h>
 int cont =0;
 
@@ -54,16 +55,28 @@ void decrescente(int *x,int tam){
 	}
 }
 
-
 int main(void){
+	clock_t tInicio, tFim;
+    float tempo_gasto;
+    //inicio da contagem de tempo gasto
+    tInicio = clock();
 	
 	int vet[10];
 	int tam = sizeof (vet)/ sizeof(int);
 	
 	entrada(vet,tam);
 	imprimir(vet,tam);
+	//inicio da contagem de tempo gasto
+    tInicio = clock();
 	ordenacao(vet,tam);
+	//Fim da contagem de tempo
+    tFim = clock();
+
+	//Resultado final da contagem de tempo
+    tempo_gasto = ((float)(tFim - tInicio)) / CLOCKS_PER_SEC;
+	printf("Tempo gasto: %f s\n", tempo_gasto);
+
 	imprimir(vet,tam);
-//	decrescente(vet,tam);
-//	imprimir(vet,tam);
+	decrescente(vet,tam);
+	imprimir(vet,tam);
 }
